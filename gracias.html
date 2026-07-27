@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Gracias | OPSIS</title>
+
+  <meta name="description"
+    content="Gracias por contactar a OPSIS. Hemos recibido tu consulta y nos pondremos en contacto contigo." />
+
+  <style>
+    :root {
+      --cream: #f7f1e8;
+      --paper: #fffaf6;
+      --olive: #4f604f;
+      --olive-dark: #2f3a31;
+      --sand: #b8a183;
+      --stone: #7b776e;
+      --line: rgba(47, 58, 49, .16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      color: var(--olive-dark);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 24px;
+    }
+
+    .card {
+      max-width: 560px;
+      width: 100%;
+      background: rgba(255, 250, 246, .85);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 48px 36px;
+      text-align: center;
+      box-shadow: 0 22px 60px rgba(47, 58, 49, .12);
+    }
+
+    .logo-symbol {
+      position: relative;
+      width: 90px;
+      height: 72px;
+      margin: 0 auto 28px;
+    }
+
+    .sq {
+      position: absolute;
+      border: 2px solid;
+    }
+
+    .sq.a {
+      width: 43px;
+      height: 43px;
+      left: 0;
+      top: 14px;
+      border-color: var(--sand);
+    }
+
+    .sq.b {
+      width: 50px;
+      height: 50px;
+      left: 26px;
+      top: 0;
+      border-color: var(--olive);
+    }
+
+    .sq.c {
+      width: 44px;
+      height: 44px;
+      left: 43px;
+      top: 28px;
+      border-color: var(--olive-dark);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      font-weight: 500;
+      margin: 0 0 18px;
+      color: var(--olive-dark);
+    }
+
+    p {
+      color: var(--stone);
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 0 0 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--olive-dark);
+      color: var(--paper);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: opacity .2s;
+    }
+
+    .btn:hover {
+      opacity: .9;
+    }
+
+    .small {
+      margin-top: 22px;
+      font-size: 13px;
+      color: var(--stone);
+    }
+
+    @media(max-width:560px) {
+      .card {
+        padding: 36px 22px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <main class="card">
+
+    <div class="logo-symbol" aria-hidden="true">
+      <span class="sq a"></span>
+      <span class="sq b"></span>
+      <span class="sq c"></span>
+    </div>
+
+    <h1>Gracias por contactarnos</h1>
+
+    <p>
+      Hemos recibido tu consulta correctamente.
+      Nuestro equipo revisará la información enviada y se pondrá en contacto contigo a la brevedad.
+    </p>
+
+    <a class="btn" href="index.html">
+      Volver a OPSIS
+    </a>
+
+    <div class="small">
+      Peritajes psicológicos, sociales y evaluación psicojurídica
+    </div>
+
+  </main>
+
+</body>
+
+</html>
