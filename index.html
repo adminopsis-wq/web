@@ -1,61 +1,956 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>OPSIS | Peritajes psicológicos, sociales y evaluación psicojurídica</title>
-  <meta name="description" content="OPSIS Peritajes: evaluaciones psicológicas, sociales y psicojurídicas para materias de familia, laboral y civil en Santiago de Chile." />
+  <meta name="description"
+    content="OPSIS Peritajes: evaluaciones psicológicas, sociales y psicojurídicas para materias de familia, laboral y civil en Santiago de Chile." />
   <style>
-    :root{
-      --cream:#f7f1e8; --paper:#fffaf6; --olive:#4f604f; --olive-dark:#2f3a31;
-      --sand:#b8a183; --charcoal:#242722; --stone:#7b776e; --line:rgba(47,58,49,.16);
-      --sage:#dfe6db; --white:#fff; --shadow:0 22px 60px rgba(47,58,49,.12);
-      --radius:26px;
+    :root {
+      --cream: #f7f1e8;
+      --paper: #fffaf6;
+      --olive: #4f604f;
+      --olive-dark: #2f3a31;
+      --sand: #b8a183;
+      --charcoal: #242722;
+      --stone: #7b776e;
+      --line: rgba(47, 58, 49, .16);
+      --sage: #dfe6db;
+      --white: #fff;
+      --shadow: 0 22px 60px rgba(47, 58, 49, .12);
+      --radius: 26px;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 10% 5%,rgba(223,230,219,.7),transparent 28%),radial-gradient(circle at 90% 3%,rgba(184,161,131,.24),transparent 30%)}
-    a{text-decoration:none;color:inherit}.wrap{width:min(1160px,calc(100% - 36px));margin:auto}
-    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--olive-dark);font-weight:500;line-height:1.05;margin:0}
-    p{margin:0;color:var(--stone)} strong{color:var(--olive-dark)}
-    .logo-symbol{position:relative;width:70px;height:58px;flex:0 0 auto}
-    .sq{position:absolute;border:2px solid;border-radius:1px;background:transparent}
-    .sq.a{width:43px;height:43px;left:0;top:14px;border-color:var(--sand)}
-    .sq.b{width:50px;height:50px;left:26px;top:0;border-color:var(--olive)}
-    .sq.c{width:44px;height:44px;left:43px;top:28px;border-color:var(--charcoal)}
-    header{position:sticky;top:0;z-index:30;background:rgba(247,241,232,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
-    .brand{display:flex;align-items:center;gap:13px}.word{font-family:Georgia,"Times New Roman",serif;font-size:31px;letter-spacing:.24em;color:var(--olive-dark);line-height:.95}.tag-mini{display:block;font-family:Inter,system-ui,sans-serif;font-size:10px;letter-spacing:.12em;color:var(--stone);margin-top:4px;font-weight:650}
-    nav{display:flex;gap:18px;align-items:center;font-weight:700;font-size:14px;color:var(--olive-dark)}
-    .nav-cta,.btn.primary{background:var(--olive-dark);color:var(--paper);box-shadow:0 12px 34px rgba(47,58,49,.18)}
-    .nav-cta{padding:11px 17px;border-radius:999px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--olive-dark);border-radius:999px;padding:14px 20px;font-weight:800;min-height:50px}.btn.secondary{background:rgba(255,250,246,.7);color:var(--olive-dark)}
-    .hero{padding:70px 0 52px}.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:44px;align-items:center}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--olive);font-weight:850;margin-bottom:22px;display:flex;gap:12px;align-items:center}.eyebrow:before{content:"";width:42px;height:1px;background:var(--olive)}
-    h1{font-size:clamp(70px,10vw,128px);letter-spacing:.14em}.hero .headline{font-family:Georgia,"Times New Roman",serif;font-size:clamp(24px,3.2vw,42px);line-height:1.12;color:var(--olive-dark);max-width:730px;margin-top:14px}.hero .lead{font-size:18px;max-width:650px;margin:24px 0 0}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.pill{border:1px solid var(--line);background:rgba(255,250,246,.72);color:var(--olive-dark);padding:9px 12px;border-radius:999px;font-size:13px;font-weight:750}
-    .hero-visual{min-height:520px;border-radius:36px;overflow:hidden;background:linear-gradient(135deg,#efe3d2,#dfe6db);box-shadow:var(--shadow);position:relative;border:1px solid rgba(255,255,255,.7)}
-    .hero-visual:before{content:"";position:absolute;inset:24px;border:1px solid rgba(255,250,246,.7);border-radius:28px}.hero-logo{position:absolute;left:42px;top:48px;display:flex;align-items:center;gap:22px}.hero-logo .logo-symbol{transform:scale(1.35);transform-origin:left center}.hero-logo .word{font-size:58px}.hero-lines{position:absolute;right:38px;top:42px;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:.28em;font-weight:850;font-size:12px;color:rgba(47,58,49,.76)}
-    .blocks{position:absolute;inset:auto 0 0 0;height:62%;background:linear-gradient(150deg,rgba(47,58,49,.06),rgba(255,250,246,.58));clip-path:polygon(0 20%,100% 0,100% 100%,0 100%)}.big-squares{position:absolute;right:34px;bottom:18px;width:410px;height:330px;opacity:.72}.big-squares .sq{border-width:3px}.big-squares .a{width:150px;height:150px;left:50px;top:86px}.big-squares .b{width:180px;height:180px;left:140px;top:10px}.big-squares .c{width:155px;height:155px;left:190px;top:132px}.note{position:absolute;left:36px;right:36px;bottom:34px;padding:22px 24px;border-radius:22px;background:rgba(255,250,246,.84);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.7)}.note strong{font-family:Georgia,serif;font-size:25px;color:var(--olive-dark);font-weight:500;display:block;margin-bottom:6px}
-    section{padding:68px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}.section-head h2{font-size:clamp(34px,5vw,58px)}.section-head p{max-width:560px;font-size:16px}.panel{background:rgba(255,250,246,.78);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 14px 46px rgba(47,58,49,.08)}
-    .people{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.person{padding:18px}.photo{height:310px;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,var(--sage),#eadbc6);display:grid;place-items:center;border:1px solid rgba(47,58,49,.12)}.photo img{width:100%;height:100%;object-fit:cover;object-position:center top}.placeholder{text-align:center;color:var(--olive-dark)}.placeholder .logo-symbol{margin:0 auto 18px;transform:scale(1.2)}.placeholder span{font-family:Georgia,serif;font-size:22px}.person h3{font-size:24px;margin:20px 0 5px}.role{color:var(--olive);font-weight:850;margin-bottom:12px}.person p{font-size:15px}.badge{display:inline-flex;margin-top:14px;border-radius:999px;padding:8px 11px;background:rgba(223,230,219,.85);font-size:12px;font-weight:850;color:var(--olive-dark)}
-    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service{padding:24px 18px;min-height:190px}.service h3{font-size:21px;margin-bottom:10px}.icon{width:48px;height:48px;border-radius:16px;background:var(--sage);display:grid;place-items:center;margin-bottom:18px;color:var(--olive-dark);font-size:24px;font-family:Georgia,serif}
-    .areas{display:grid;grid-template-columns:1fr 1.1fr;gap:24px}.area-visual{min-height:420px;background:var(--olive-dark);color:var(--paper);position:relative;overflow:hidden;padding:36px}.area-visual h2{font-size:48px;color:var(--paper);max-width:390px}.area-visual p{color:rgba(255,250,246,.78);max-width:420px;margin-top:18px}.area-visual .big-squares{opacity:.24;right:-20px;bottom:-20px;transform:scale(1.08)}.area-visual .sq{border-color:var(--paper)!important}.area-list{padding:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.area-item{background:rgba(223,230,219,.48);border:1px solid rgba(47,58,49,.08);padding:14px 15px;border-radius:17px;font-weight:750;color:var(--olive-dark);font-size:14px}
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}.text-card{padding:34px}.text-card h2{font-size:40px;margin-bottom:18px}.text-card p{margin-bottom:14px}.principles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}.principle{padding:15px;border-radius:17px;background:rgba(255,250,246,.7);border:1px solid var(--line);font-weight:800;color:var(--olive-dark);text-align:center;font-size:14px}
-    .why{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.why-item{padding:22px;min-height:150px}.why-item h3{font-size:22px;margin-bottom:10px}.why-item p{font-size:15px}
-    .faq{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.faq-item{padding:24px}.faq-item h3{font-size:23px;margin-bottom:12px}.faq-item p{font-size:15px}
-    .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}.contact .big{padding:38px;background:var(--olive-dark);color:var(--paper);border-radius:var(--radius)}.contact .big h2{color:var(--paper);font-size:48px;margin-bottom:18px}.contact .big p{color:rgba(255,250,246,.76);margin-bottom:26px}.contact-data{display:grid;gap:12px;margin-top:22px}.contact-data a,.contact-data span{display:block;color:var(--paper);font-weight:850}.contact-form{padding:30px}.form-grid{display:grid;gap:12px}input,select,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.68);font:inherit}textarea{min-height:130px;resize:vertical}button{cursor:pointer}
-    footer{padding:34px 0;border-top:1px solid var(--line);color:var(--stone);font-size:14px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.whatsapp{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--olive-dark);color:var(--paper);padding:14px 17px;border-radius:999px;box-shadow:0 16px 40px rgba(47,58,49,.28);font-weight:850;font-size:14px}
-    @media(max-width:980px){nav{display:none}.hero-grid,.areas,.split,.contact{grid-template-columns:1fr}.people{grid-template-columns:1fr}.services,.why,.faq{grid-template-columns:1fr}.principles{grid-template-columns:repeat(2,1fr)}.section-head{display:block}.section-head p{margin-top:12px}.hero-visual{min-height:420px}.photo{height:340px}.area-list{grid-template-columns:1fr}.hero-logo .word{font-size:42px}}
-    @media(max-width:560px){.wrap{width:min(100% - 24px,1160px)}.nav{height:68px}.tag-mini{display:none}.word{font-size:25px}.logo-symbol{width:48px;height:44px}.sq.a{width:29px;height:29px;top:10px}.sq.b{width:35px;height:35px;left:18px}.sq.c{width:31px;height:31px;left:30px;top:20px}.hero{padding:44px 0 22px}h1{font-size:56px}.hero .headline{font-size:24px}.hero .lead{font-size:16px}.actions .btn{width:100%}.hero-visual{min-height:360px;border-radius:28px}.hero-logo{left:24px;top:30px;gap:10px}.hero-logo .word{font-size:34px}.hero-logo .logo-symbol{transform:scale(1.05)}.hero-lines{display:none}.big-squares{width:260px;height:220px;right:6px;bottom:42px;opacity:.4}.big-squares .a{width:92px;height:92px;left:32px;top:58px}.big-squares .b{width:112px;height:112px;left:90px}.big-squares .c{width:96px;height:96px;left:122px;top:92px}.note{left:16px;right:16px;bottom:16px;padding:16px}.note strong{font-size:20px}section{padding:48px 0}.principles{grid-template-columns:1fr}.text-card,.contact-form,.contact .big,.area-visual{padding:24px}.section-head h2,.text-card h2,.contact .big h2,.area-visual h2{font-size:34px}.whatsapp{left:14px;right:14px;text-align:center}.foot{padding-bottom:55px}}
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      background: radial-gradient(circle at 10% 5%, rgba(223, 230, 219, .7), transparent 28%), radial-gradient(circle at 90% 3%, rgba(184, 161, 131, .24), transparent 30%)
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 36px));
+      margin: auto
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--olive-dark);
+      font-weight: 500;
+      line-height: 1.05;
+      margin: 0
+    }
+
+    p {
+      margin: 0;
+      color: var(--stone)
+    }
+
+    strong {
+      color: var(--olive-dark)
+    }
+
+    .logo-symbol {
+      position: relative;
+      width: 90px;
+      height: 72px;
+      flex: 0 0 auto;
+    }
+
+    .sq {
+      position: absolute;
+      border: 2px solid;
+      border-radius: 1px;
+      background: transparent
+    }
+
+    .sq.a {
+      width: 43px;
+      height: 43px;
+      left: 0;
+      top: 14px;
+      border-color: var(--sand)
+    }
+
+    .sq.b {
+      width: 50px;
+      height: 50px;
+      left: 26px;
+      top: 0;
+      border-color: var(--olive)
+    }
+
+    .sq.c {
+      width: 44px;
+      height: 44px;
+      left: 43px;
+      top: 28px;
+      border-color: var(--charcoal)
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(247, 241, 232, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .nav {
+      min-height: 76px;
+      padding:8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px
+    }
+
+    .word {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 31px;
+      letter-spacing: .24em;
+      color: var(--olive-dark);
+      line-height: .95
+    }
+
+    .tag-mini {
+      display: block;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 10px;
+      letter-spacing: .12em;
+      color: var(--stone);
+      margin-top: 4px;
+      font-weight: 650
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--olive-dark)
+    }
+
+    .nav-cta,
+    .btn.primary {
+      background: var(--olive-dark);
+      color: var(--paper);
+      box-shadow: 0 12px 34px rgba(47, 58, 49, .18)
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 999px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--olive-dark);
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 800;
+      min-height: 50px
+    }
+
+    .btn.secondary {
+      background: rgba(255, 250, 246, .7);
+      color: var(--olive-dark)
+    }
+
+    .hero {
+      padding: 70px 0 52px
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      gap: 44px;
+      align-items: center
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--olive);
+      font-weight: 850;
+      margin-bottom: 22px;
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .eyebrow:before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: var(--olive)
+    }
+
+    h1 {
+      font-size: clamp(70px, 10vw, 128px);
+      letter-spacing: .14em
+    }
+
+    .hero .headline {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(24px, 3.2vw, 42px);
+      line-height: 1.12;
+      color: var(--olive-dark);
+      max-width: 730px;
+      margin-top: 14px
+    }
+
+    .hero .lead {
+      font-size: 18px;
+      max-width: 650px;
+      margin: 24px 0 0
+    }
+
+    .actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 32px
+    }
+
+    .pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 246, .72);
+      color: var(--olive-dark);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 750
+    }
+
+    .hero-visual {
+      min-height: 520px;
+      border-radius: 36px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #efe3d2, #dfe6db);
+      box-shadow: var(--shadow);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, .7)
+    }
+
+    .hero-visual:before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(255, 250, 246, .7);
+      border-radius: 28px
+    }
+
+    .hero-logo {
+      position: absolute;
+      left: 42px;
+      top: 48px;
+      display: flex;
+      align-items: center;
+      gap: 55px
+    }
+
+    .hero-logo .logo-symbol {
+      transform: scale(1.35);
+      transform-origin: left center
+    }
+
+    .hero-logo .word {
+      font-size: 58px
+    }
+
+    .hero-lines {
+      position: absolute;
+      right: 38px;
+      top: 42px;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      letter-spacing: .28em;
+      font-weight: 850;
+      font-size: 12px;
+      color: rgba(47, 58, 49, .76)
+    }
+
+    .blocks {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 62%;
+      background: linear-gradient(150deg, rgba(47, 58, 49, .06), rgba(255, 250, 246, .58));
+      clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%)
+    }
+
+    .big-squares {
+      position: absolute;
+      right: 34px;
+      bottom: 18px;
+      width: 410px;
+      height: 330px;
+      opacity: .72
+    }
+
+    .big-squares .sq {
+      border-width: 3px
+    }
+
+    .big-squares .a {
+      width: 150px;
+      height: 150px;
+      left: 50px;
+      top: 86px
+    }
+
+    .big-squares .b {
+      width: 180px;
+      height: 180px;
+      left: 140px;
+      top: 10px
+    }
+
+    .big-squares .c {
+      width: 155px;
+      height: 155px;
+      left: 190px;
+      top: 132px
+    }
+
+    .note {
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 34px;
+      padding: 22px 24px;
+      border-radius: 22px;
+      background: rgba(255, 250, 246, .84);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .7)
+    }
+
+    .note strong {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      color: var(--olive-dark);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px
+    }
+
+    section {
+      padding: 68px 0
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 5vw, 58px)
+    }
+
+    .section-head p {
+      max-width: 560px;
+      font-size: 16px
+    }
+
+    .panel {
+      background: rgba(255, 250, 246, .78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 46px rgba(47, 58, 49, .08)
+    }
+
+    .people {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px
+    }
+
+    .person {
+      padding: 18px
+    }
+
+    .photo {
+      height: 310px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--sage), #eadbc6);
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(47, 58, 49, .12)
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top
+    }
+
+    .placeholder {
+      text-align: center;
+      color: var(--olive-dark)
+    }
+
+    .placeholder .logo-symbol {
+      margin: 0 auto 18px;
+      transform: scale(1.2)
+    }
+
+    .placeholder span {
+      font-family: Georgia, serif;
+      font-size: 22px
+    }
+
+    .person h3 {
+      font-size: 24px;
+      margin: 20px 0 5px
+    }
+
+    .role {
+      color: var(--olive);
+      font-weight: 850;
+      margin-bottom: 12px
+    }
+
+    .person p {
+      font-size: 15px
+    }
+
+    .badge {
+      display: inline-flex;
+      margin-top: 14px;
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(223, 230, 219, .85);
+      font-size: 12px;
+      font-weight: 850;
+      color: var(--olive-dark)
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .service {
+      padding: 24px 18px;
+      min-height: 190px
+    }
+
+    .service h3 {
+      font-size: 21px;
+      margin-bottom: 10px
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--sage);
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: var(--olive-dark);
+      font-size: 24px;
+      font-family: Georgia, serif
+    }
+
+    .areas {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 24px
+    }
+
+    .area-visual {
+      min-height: 420px;
+      background: var(--olive-dark);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+      padding: 36px
+    }
+
+    .area-visual h2 {
+      font-size: 48px;
+      color: var(--paper);
+      max-width: 390px
+    }
+
+    .area-visual p {
+      color: rgba(255, 250, 246, .78);
+      max-width: 420px;
+      margin-top: 18px
+    }
+
+    .area-visual .big-squares {
+      opacity: .24;
+      right: -20px;
+      bottom: -20px;
+      transform: scale(1.08)
+    }
+
+    .area-visual .sq {
+      border-color: var(--paper) !important
+    }
+
+    .area-list {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px
+    }
+
+    .area-item {
+      background: rgba(223, 230, 219, .48);
+      border: 1px solid rgba(47, 58, 49, .08);
+      padding: 14px 15px;
+      border-radius: 17px;
+      font-weight: 750;
+      color: var(--olive-dark);
+      font-size: 14px
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px
+    }
+
+    .text-card {
+      padding: 34px
+    }
+
+    .text-card h2 {
+      font-size: 40px;
+      margin-bottom: 18px
+    }
+
+    .text-card p {
+      margin-bottom: 14px
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 22px
+    }
+
+    .principle {
+      padding: 15px;
+      border-radius: 17px;
+      background: rgba(255, 250, 246, .7);
+      border: 1px solid var(--line);
+      font-weight: 800;
+      color: var(--olive-dark);
+      text-align: center;
+      font-size: 14px
+    }
+
+    .why {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px
+    }
+
+    .why-item {
+      padding: 22px;
+      min-height: 150px
+    }
+
+    .why-item h3 {
+      font-size: 22px;
+      margin-bottom: 10px
+    }
+
+    .why-item p {
+      font-size: 15px
+    }
+
+    .faq {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px
+    }
+
+    .faq-item {
+      padding: 24px
+    }
+
+    .faq-item h3 {
+      font-size: 23px;
+      margin-bottom: 12px
+    }
+
+    .faq-item p {
+      font-size: 15px
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px
+    }
+
+    .contact .big {
+      padding: 38px;
+      background: var(--olive-dark);
+      color: var(--paper);
+      border-radius: var(--radius)
+    }
+
+    .contact .big h2 {
+      color: var(--paper);
+      font-size: 48px;
+      margin-bottom: 18px
+    }
+
+    .contact .big p {
+      color: rgba(255, 250, 246, .76);
+      margin-bottom: 26px
+    }
+
+    .contact-data {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px
+    }
+
+    .contact-data a,
+    .contact-data span {
+      display: block;
+      color: var(--paper);
+      font-weight: 850
+    }
+
+    .contact-form {
+      padding: 30px
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .68);
+      font: inherit
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--stone);
+      font-size: 14px
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+      background: var(--olive-dark);
+      color: var(--paper);
+      padding: 14px 17px;
+      border-radius: 999px;
+      box-shadow: 0 16px 40px rgba(47, 58, 49, .28);
+      font-weight: 850;
+      font-size: 14px
+    }
+
+    @media(max-width:980px) {
+      nav {
+        display: none
+      }
+
+      .hero-grid,
+      .areas,
+      .split,
+      .contact {
+        grid-template-columns: 1fr
+      }
+
+      .people {
+        grid-template-columns: 1fr
+      }
+
+      .services,
+      .why,
+      .faq {
+        grid-template-columns: 1fr
+      }
+
+      .principles {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .section-head {
+        display: block
+      }
+
+      .section-head p {
+        margin-top: 12px
+      }
+
+      .hero-visual {
+        min-height: 420px
+      }
+
+      .photo {
+        height: 340px
+      }
+
+      .area-list {
+        grid-template-columns: 1fr
+      }
+
+      .hero-logo .word {
+        font-size: 42px
+      }
+    }
+
+    @media(max-width:560px) {
+      .wrap {
+        width: min(100% - 24px, 1160px)
+      }
+
+      .nav {
+        height: 68px
+      }
+
+      .tag-mini {
+        display: none
+      }
+
+      .word {
+        font-size: 25px
+      }
+
+      .logo-symbol {
+        width:62px;
+        height:44px;
+      }
+      .sq.a {
+        width: 29px;
+        height: 29px;
+        top: 10px
+      }
+
+      .sq.b {
+        width: 35px;
+        height: 35px;
+        left: 18px
+      }
+
+      .sq.c {
+        width: 31px;
+        height: 31px;
+        left: 30px;
+        top: 20px
+      }
+
+      .hero {
+        padding: 44px 0 22px
+      }
+
+      h1 {
+        font-size: 56px
+      }
+
+      .hero .headline {
+        font-size: 24px
+      }
+
+      .hero .lead {
+        font-size: 16px
+      }
+
+      .actions .btn {
+        width: 100%
+      }
+
+      .hero-visual {
+        min-height: 360px;
+        border-radius: 28px
+      }
+
+      .hero-logo {
+        left: 24px;
+        top: 30px;
+        gap: 10px
+      }
+
+      .hero-logo .word {
+        font-size: 34px
+      }
+
+      .hero-logo .logo-symbol {
+        transform: scale(1.05)
+      }
+
+      .hero-lines {
+        display: none
+      }
+
+      .big-squares {
+        width: 260px;
+        height: 220px;
+        right: 6px;
+        bottom: 42px;
+        opacity: .4
+      }
+
+      .big-squares .a {
+        width: 92px;
+        height: 92px;
+        left: 32px;
+        top: 58px
+      }
+
+      .big-squares .b {
+        width: 112px;
+        height: 112px;
+        left: 90px
+      }
+
+      .big-squares .c {
+        width: 96px;
+        height: 96px;
+        left: 122px;
+        top: 92px
+      }
+
+      .note {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        padding: 16px
+      }
+
+      .note strong {
+        font-size: 20px
+      }
+
+      section {
+        padding: 48px 0
+      }
+
+      .principles {
+        grid-template-columns: 1fr
+      }
+
+      .text-card,
+      .contact-form,
+      .contact .big,
+      .area-visual {
+        padding: 24px
+      }
+
+      .section-head h2,
+      .text-card h2,
+      .contact .big h2,
+      .area-visual h2 {
+        font-size: 34px
+      }
+
+      .whatsapp {
+        left: 14px;
+        right: 14px;
+        text-align: center
+      }
+
+      .foot {
+        padding-bottom: 55px
+      }
+    }
+
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav">
       <a class="brand" href="#inicio" aria-label="OPSIS inicio">
-        <span class="logo-symbol" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span class="sq c"></span></span>
-        <span><span class="word">OPSIS</span><span class="tag-mini">Peritajes psicológicos, sociales y evaluación psicojurídica</span></span>
+        <span class="logo-symbol" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span
+            class="sq c"></span></span>
+        <span><span class="word">OPSIS</span><span class="tag-mini">Peritajes psicológicos, sociales y evaluación
+            psicojurídica</span></span>
       </a>
       <nav>
-        <a href="#equipo">Equipo</a><a href="#servicios">Servicios</a><a href="#areas">Áreas</a><a href="#enfoque">Enfoque</a><a href="#faq">Preguntas</a><a class="nav-cta" href="#contacto">Solicitar evaluación</a>
+        <a href="#equipo">Equipo</a><a href="#servicios">Servicios</a><a href="#areas">Áreas</a><a
+          href="#enfoque">Enfoque</a><a href="#faq">Preguntas</a><a class="nav-cta" href="#contacto">Solicitar
+          evaluación</a>
       </nav>
     </div>
   </header>
@@ -66,59 +961,275 @@
           <div class="eyebrow">Psicología · Trabajo social · Justicia</div>
           <h1>OPSIS</h1>
           <div class="headline">Peritajes psicológicos, sociales y evaluación psicojurídica.</div>
-          <p class="lead">Informes técnicamente fundados para materias de familia, laboral y civil, elaborados desde una perspectiva interdisciplinaria y orientados a aportar antecedentes relevantes para procesos judiciales y toma de decisiones.</p>
-          <div class="actions"><a class="btn primary" href="#contacto">Solicitar evaluación</a><a class="btn secondary" href="https://wa.me/56988288237">Contactar por WhatsApp</a></div>
-          <div class="pills"><span class="pill">Perito inscrita en la Corte de Apelaciones de Santiago</span><span class="pill">Familia · Laboral · Civil</span><span class="pill">Rigor técnico y trato respetuoso</span></div>
+          <p class="lead">Informes técnicamente fundados para materias de familia, laboral y civil, elaborados desde una
+            perspectiva interdisciplinaria y orientados a aportar antecedentes relevantes para procesos judiciales y
+            toma de decisiones.</p>
+          <div class="actions"><a class="btn primary" href="#contacto">Solicitar evaluación</a><a class="btn secondary"
+              href="https://wa.me/56988288237">Contactar por WhatsApp</a></div>
+          <div class="pills"><span class="pill">Perito inscrita en la Corte de Apelaciones de Santiago</span><span
+              class="pill">Familia · Laboral · Civil</span><span class="pill">Rigor técnico y trato respetuoso</span>
+          </div>
         </div>
         <div class="hero-visual">
           <div class="blocks"></div>
-          <div class="hero-logo"><span class="logo-symbol" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span class="sq c"></span></span><span class="word">OPSIS</span></div>
+          <div class="hero-logo"><span class="logo-symbol" aria-hidden="true"><span class="sq a"></span><span
+                class="sq b"></span><span class="sq c"></span></span><span class="word">OPSIS</span></div>
           <div class="hero-lines">RIGOR · ÉTICA · COMPROMISO · RESPETO</div>
-          <div class="big-squares" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span class="sq c"></span></div>
-          <div class="note"><strong>Observar, integrar y fundamentar.</strong><p>Los cuadrados intersectados representan la articulación entre la dimensión psicológica, social y jurídica.</p></div>
+          <div class="big-squares" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span
+              class="sq c"></span></div>
+          <div class="note"><strong>Observar, integrar y fundamentar.</strong>
+            <p>Los cuadrados intersectados representan la articulación entre la dimensión psicológica, social y
+              jurídica.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="equipo"><div class="wrap"><div class="section-head"><h2>Equipo multidisciplinario</h2><p>Profesionales que aportan desde su especialidad para una comprensión amplia de cada caso.</p></div><div class="people">
-      <article class="person panel"><div class="photo"><img src="assets/paloma.jpg" alt="Foto profesional de Paloma Andrea Álvarez Gómez"></div><h3>Paloma Andrea Álvarez Gómez</h3><div class="role">Psicóloga · Perito Judicial</div><p>Psicóloga con experiencia en evaluación psicológica y pericial. Desarrolla peritajes psicológicos e informes técnicos en materias de familia, laboral y daño psicológico.</p><span class="badge">Inscrita en la Corte de Apelaciones de Santiago</span></article>
-      <article class="person panel"><div class="photo placeholder"><div><span class="logo-symbol"><span class="sq a"></span><span class="sq b"></span><span class="sq c"></span></span><span>Foto de Claudia</span></div></div><h3>Claudia Guerrero Salcedo</h3><div class="role">Trabajadora Social · Profesional Asociada</div><p>Trabajadora Social y Perito Social, con experiencia en evaluación social, atención a víctimas y trabajo pericial en materias de familia, vulneración de derechos y daño psicosocial.</p></article>
-      <article class="person panel"><div class="photo placeholder"><div><span class="logo-symbol"><span class="sq a"></span><span class="sq b"></span><span class="sq c"></span></span><span>Foto de Diana</span></div></div><h3>Diana</h3><div class="role">Psicóloga · Tallerista · Profesional Asociada</div><p>Psicóloga con experiencia en trabajo grupal y acompañamiento psicoeducativo. Desarrolla talleres y espacios de reflexión con enfoque de género en materias de familia, promoviendo recursos personales, vinculares y comunitarios en procesos de cambio y fortalecimiento.</p></article>
-    </div></div></section>
+    <section id="equipo">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Equipo multidisciplinario</h2>
+          <p>Profesionales que aportan desde su especialidad para una comprensión amplia de cada caso.</p>
+        </div>
+        <div class="people">
+          <article class="person panel">
+            <div class="photo"><img src="assets/paloma.jpg" alt="Foto profesional de Paloma Andrea Álvarez Gómez"></div>
+            <h3>Paloma Andrea Álvarez Gómez</h3>
+            <div class="role">Psicóloga · Perito Judicial</div>
+            <p>Psicóloga con experiencia en evaluación psicológica y pericial. Desarrolla peritajes psicológicos e
+              informes técnicos en materias de familia, laboral y daño psicológico.</p><span class="badge">Inscrita en
+              la Corte de Apelaciones de Santiago</span>
+          </article>
+          <article class="person panel">
+            <div class="photo"><img src="assets/claudia.jpg" alt="Foto profesional de Claudia Guerrero Salcedo"></div>
+            <h3>Claudia Guerrero Salcedo</h3>
+            <div class="role">Trabajadora Social · Profesional Asociada</div>
+            <p>Trabajadora Social y Perito Social, con experiencia en evaluación social, atención a víctimas y trabajo
+              pericial en materias de familia, vulneración de derechos y daño psicosocial.</p>
+          </article>
+          <article class="person panel">
+            <div class="photo placeholder">
+              <div><span class="logo-symbol"><span class="sq a"></span><span class="sq b"></span><span
+                    class="sq c"></span></span><span></span></div>
+            </div>
+            <h3>Diana</h3>
+            <div class="role">Psicóloga · Tallerista · Profesional Asociada</div>
+            <p>Psicóloga con experiencia en trabajo grupal y acompañamiento psicoeducativo. Desarrolla talleres y
+              espacios de reflexión con enfoque de género en materias de familia, promoviendo recursos personales,
+              vinculares y comunitarios en procesos de cambio y fortalecimiento.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="servicios"><div class="wrap"><div class="section-head"><h2>Servicios</h2><p>Evaluaciones orientadas a entregar antecedentes técnicos, objetivos y fundados para procesos judiciales, familiares, laborales e institucionales.</p></div><div class="services">
-      <article class="service panel"><div class="icon">Ψ</div><h3>Peritajes psicológicos</h3><p>Evaluaciones periciales en materias de familia, laboral y civil.</p></article>
-      <article class="service panel"><div class="icon">◇</div><h3>Evaluación de daño psicológico</h3><p>Análisis de afectación emocional y psicológica en contextos judiciales.</p></article>
-      <article class="service panel"><div class="icon">⌂</div><h3>Competencias parentales</h3><p>Valoración de recursos parentales y dinámica familiar.</p></article>
-      <article class="service panel"><div class="icon">□</div><h3>Evaluación social</h3><p>Análisis de antecedentes familiares, comunitarios y socioeconómicos.</p></article>
-      <article class="service panel"><div class="icon">§</div><h3>Evaluación psicojurídica integral</h3><p>Integración de antecedentes psicológicos, sociales y jurídicos.</p></article>
-      <article class="service panel"><div class="icon">●</div><h3>Informes técnicos especializados</h3><p>Informes técnicamente fundamentados para tribunales, abogados e instituciones.</p></article>
-    </div></div></section>
+    <section id="servicios">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Servicios</h2>
+          <p>Evaluaciones orientadas a entregar antecedentes técnicos, objetivos y fundados para procesos judiciales,
+            familiares, laborales e institucionales.</p>
+        </div>
+        <div class="services">
+          <article class="service panel">
+            <div class="icon">Ψ</div>
+            <h3>Peritajes psicológicos</h3>
+            <p>Evaluaciones periciales en materias de familia, laboral y civil.</p>
+          </article>
+          <article class="service panel">
+            <div class="icon">◇</div>
+            <h3>Evaluación de daño psicológico</h3>
+            <p>Análisis de afectación emocional y psicológica en contextos judiciales.</p>
+          </article>
+          <article class="service panel">
+            <div class="icon">⌂</div>
+            <h3>Competencias parentales</h3>
+            <p>Valoración de recursos parentales y dinámica familiar.</p>
+          </article>
+          <article class="service panel">
+            <div class="icon">□</div>
+            <h3>Evaluación social</h3>
+            <p>Análisis de antecedentes familiares, comunitarios y socioeconómicos.</p>
+          </article>
+          <article class="service panel">
+            <div class="icon">§</div>
+            <h3>Evaluación psicojurídica integral</h3>
+            <p>Integración de antecedentes psicológicos, sociales y jurídicos.</p>
+          </article>
+          <article class="service panel">
+            <div class="icon">●</div>
+            <h3>Informes técnicos especializados</h3>
+            <p>Informes técnicamente fundamentados para tribunales, abogados e instituciones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="areas"><div class="wrap areas"><div class="area-visual panel"><h2>Áreas de trabajo</h2><p>Evaluaciones especializadas para contextos familiares, laborales y civiles, considerando dimensiones psicológicas, sociales y jurídicas.</p><div class="big-squares" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span class="sq c"></span></div></div><div class="panel area-list">
-      <div class="area-item">Cuidado personal</div><div class="area-item">Relación directa y regular</div><div class="area-item">Competencias parentales</div><div class="area-item">Vulneración de derechos</div><div class="area-item">Daño psicológico</div><div class="area-item">Acoso laboral</div><div class="area-item">Conflictos laborales</div><div class="area-item">Evaluación social familiar</div><div class="area-item">Experiencias traumáticas</div><div class="area-item">Evaluación psicojurídica integral</div>
-    </div></div></section>
+    <section id="areas">
+      <div class="wrap areas">
+        <div class="area-visual panel">
+          <h2>Áreas de trabajo</h2>
+          <p>Evaluaciones especializadas para contextos familiares, laborales y civiles, considerando dimensiones
+            psicológicas, sociales y jurídicas.</p>
+          <div class="big-squares" aria-hidden="true"><span class="sq a"></span><span class="sq b"></span><span
+              class="sq c"></span></div>
+        </div>
+        <div class="panel area-list">
+          <div class="area-item">Cuidado personal</div>
+          <div class="area-item">Relación directa y regular</div>
+          <div class="area-item">Competencias parentales</div>
+          <div class="area-item">Vulneración de derechos</div>
+          <div class="area-item">Daño psicológico</div>
+          <div class="area-item">Acoso laboral</div>
+          <div class="area-item">Conflictos laborales</div>
+          <div class="area-item">Evaluación social familiar</div>
+          <div class="area-item">Experiencias traumáticas</div>
+          <div class="area-item">Evaluación psicojurídica integral</div>
+        </div>
+      </div>
+    </section>
 
-    <section id="enfoque"><div class="wrap split"><article class="text-card panel"><h2>Nuestro enfoque</h2><p>Entendemos que participar en una evaluación pericial puede resultar exigente para las personas involucradas. Por ello, procuramos desarrollar cada proceso con respeto, claridad y consideración por la experiencia de quienes participan, sin perder el rigor técnico que exige el contexto judicial.</p><p>Creemos que una evaluación técnicamente sólida también puede realizarse desde una perspectiva humana, favoreciendo espacios de escucha, comprensión y trato respetuoso durante todo el proceso.</p><div class="principles"><div class="principle">Rigor metodológico</div><div class="principle">Trabajo interdisciplinario</div><div class="principle">Fundamentación técnica</div><div class="principle">Trato respetuoso</div><div class="principle">Compromiso ético</div></div></article><article class="text-card panel"><h2>Sobre OPSIS</h2><p>El nombre <strong>OPSIS</strong> proviene del griego y se relaciona con la observación, la mirada y la forma de comprender una realidad.</p><p>La identidad visual de la marca representa la integración de distintas perspectivas para el análisis de situaciones complejas desde una mirada psicológica, social y jurídica.</p><p>Esta imagen expresa una forma de trabajo rigurosa, ética e interdisciplinaria.</p></article></div></section>
+    <section id="enfoque">
+      <div class="wrap split">
+        <article class="text-card panel">
+          <h2>Nuestro enfoque</h2>
+          <p>Entendemos que participar en una evaluación pericial puede resultar exigente para las personas
+            involucradas. Por ello, procuramos desarrollar cada proceso con respeto, claridad y consideración por la
+            experiencia de quienes participan, sin perder el rigor técnico que exige el contexto judicial.</p>
+          <p>Creemos que una evaluación técnicamente sólida también puede realizarse desde una perspectiva humana,
+            favoreciendo espacios de escucha, comprensión y trato respetuoso durante todo el proceso.</p>
+          <div class="principles">
+            <div class="principle">Rigor metodológico</div>
+            <div class="principle">Trabajo interdisciplinario</div>
+            <div class="principle">Fundamentación técnica</div>
+            <div class="principle">Trato respetuoso</div>
+            <div class="principle">Compromiso ético</div>
+          </div>
+        </article>
+        <article class="text-card panel">
+          <h2>Sobre OPSIS</h2>
+          <p>El nombre <strong>OPSIS</strong> proviene del griego y se relaciona con la observación, la mirada y la
+            forma de comprender una realidad.</p>
+          <p>La identidad visual de la marca representa la integración de distintas perspectivas para el análisis de
+            situaciones complejas desde una mirada psicológica, social y jurídica.</p>
+          <p>Esta imagen expresa una forma de trabajo rigurosa, ética e interdisciplinaria.</p>
+        </article>
+      </div>
+    </section>
 
-    <section id="por-que"><div class="wrap"><div class="section-head"><h2>¿Por qué elegir OPSIS?</h2><p>Una propuesta técnica orientada a abogados, particulares, tribunales e instituciones que requieren evaluaciones claras, fundadas y respetuosas.</p></div><div class="why">
-      <article class="why-item panel"><h3>Pericia acreditada</h3><p>Perito inscrita en la Corte de Apelaciones de Santiago.</p></article>
-      <article class="why-item panel"><h3>Trabajo interdisciplinario</h3><p>Integración de perspectivas psicológicas, sociales y psicojurídicas.</p></article>
-      <article class="why-item panel"><h3>Metodología rigurosa</h3><p>Evaluaciones basadas en criterios técnicos y evidencia científica.</p></article>
-      <article class="why-item panel"><h3>Informes claros</h3><p>Documentos técnicamente fundamentados, ordenados y comprensibles.</p></article>
-      <article class="why-item panel"><h3>Modalidad flexible</h3><p>Atención presencial y online, según el tipo de evaluación y caso.</p></article>
-      <article class="why-item panel"><h3>Trato humano</h3><p>Respeto, claridad y consideración por la experiencia de quienes participan.</p></article>
-    </div></div></section>
+    <section id="por-que">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>¿Por qué elegir OPSIS?</h2>
+          <p>Una propuesta técnica orientada a abogados, particulares, tribunales e instituciones que requieren
+            evaluaciones claras, fundadas y respetuosas.</p>
+        </div>
+        <div class="why">
+          <article class="why-item panel">
+            <h3>Pericia acreditada</h3>
+            <p>Perito inscrita en la Corte de Apelaciones de Santiago.</p>
+          </article>
+          <article class="why-item panel">
+            <h3>Trabajo interdisciplinario</h3>
+            <p>Integración de perspectivas psicológicas, sociales y psicojurídicas.</p>
+          </article>
+          <article class="why-item panel">
+            <h3>Metodología rigurosa</h3>
+            <p>Evaluaciones basadas en criterios técnicos y evidencia científica.</p>
+          </article>
+          <article class="why-item panel">
+            <h3>Informes claros</h3>
+            <p>Documentos técnicamente fundamentados, ordenados y comprensibles.</p>
+          </article>
+          <article class="why-item panel">
+            <h3>Modalidad flexible</h3>
+            <p>Atención presencial y online, según el tipo de evaluación y caso.</p>
+          </article>
+          <article class="why-item panel">
+            <h3>Trato humano</h3>
+            <p>Respeto, claridad y consideración por la experiencia de quienes participan.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="faq"><div class="wrap"><div class="section-head"><h2>Preguntas frecuentes</h2><p>Información general para orientar la solicitud inicial de evaluación.</p></div><div class="faq">
-      <article class="faq-item panel"><h3>¿Cuánto demora un peritaje?</h3><p>Los plazos varían según la complejidad del caso y la disponibilidad de entrevistas, antecedentes y evaluaciones complementarias.</p></article>
-      <article class="faq-item panel"><h3>¿Se puede realizar online?</h3><p>Dependiendo del tipo de evaluación y de las características del caso, algunas etapas pueden desarrollarse mediante modalidad online.</p></article>
-      <article class="faq-item panel"><h3>¿Qué antecedentes debo aportar?</h3><p>Documentación judicial relevante, antecedentes clínicos cuando corresponda y cualquier información pertinente para la evaluación solicitada.</p></article>
-      <article class="faq-item panel"><h3>¿Los informes sirven para juicio?</h3><p>Los informes periciales son elaborados para aportar antecedentes técnicos especializados que pueden ser incorporados en procesos judiciales.</p></article>
-    </div></div></section>
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Preguntas frecuentes</h2>
+          <p>Información general para orientar la solicitud inicial de evaluación.</p>
+        </div>
+        <div class="faq">
+          <article class="faq-item panel">
+            <h3>¿Cuánto demora un peritaje?</h3>
+            <p>Los plazos varían según la complejidad del caso y la disponibilidad de entrevistas, antecedentes y
+              evaluaciones complementarias.</p>
+          </article>
+          <article class="faq-item panel">
+            <h3>¿Se puede realizar online?</h3>
+            <p>Dependiendo del tipo de evaluación y de las características del caso, algunas etapas pueden desarrollarse
+              mediante modalidad online.</p>
+          </article>
+          <article class="faq-item panel">
+            <h3>¿Qué antecedentes debo aportar?</h3>
+            <p>Documentación judicial relevante, antecedentes clínicos cuando corresponda y cualquier información
+              pertinente para la evaluación solicitada.</p>
+          </article>
+          <article class="faq-item panel">
+            <h3>¿Los informes sirven para juicio?</h3>
+            <p>Los informes periciales son elaborados para aportar antecedentes técnicos especializados que pueden ser
+              incorporados en procesos judiciales.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <section id="contacto"><div class="wrap contact"><div class="big"><h2>Solicitar evaluación</h2><p>Para consultas profesionales, coordinación de evaluaciones o solicitud de antecedentes sobre disponibilidad y honorarios.</p><div class="contact-data"><a href="mailto:consulta@opsisperitajes.cl">consulta@opsisperitajes.cl</a><a href="https://wa.me/56988288237">+56 9 8828 8237</a><span>Santiago de Chile</span></div></div><form class="contact-form panel" onsubmit="event.preventDefault(); window.location.href='mailto:consulta@opsisperitajes.cl?subject=Solicitud%20de%20evaluaci%C3%B3n%20OPSIS';"><div class="form-grid"><input type="text" placeholder="Nombre"><input type="email" placeholder="Correo electrónico"><select><option>Tipo de consulta</option><option>Peritaje psicológico</option><option>Evaluación social</option><option>Evaluación psicojurídica integral</option><option>Talleres grupales</option></select><textarea placeholder="Cuéntanos brevemente qué necesitas"></textarea><button class="btn primary" type="submit">Enviar consulta</button></div></form></div></section>
+    <section id="contacto">
+      <div class="wrap contact">
+        <div class="big">
+          <h2>Solicitar evaluación</h2>
+          <p>Para consultas profesionales, coordinación de evaluaciones o solicitud de antecedentes sobre disponibilidad
+            y honorarios.</p>
+          <div class="contact-data"><a href="mailto:consulta@opsisperitajes.cl">consulta@opsisperitajes.cl</a><a
+              href="https://wa.me/56988288237">+56 9 8828 8237</a><span>Santiago de Chile</span></div>
+        </div>
+        <form class="contact-form panel" action="https://formsubmit.co/admin.opsis@gmail.com" method="POST">
+          <div class="form-grid">
+            <input type="hidden" name="_subject" value="Nueva consulta desde OPSIS">
+
+            <input type="hidden" name="_captcha" value="true">
+
+            <input type="hidden" name="_template" value="table">
+
+            <input type="hidden" name="_next" value="https://opsisperitajes.cl/gracias.html">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+
+            <select name="tipo" required>
+              <option value="">Tipo de consulta</option>
+              <option>Peritaje psicológico</option>
+              <option>Evaluación social</option>
+              <option>Evaluación psicojurídica integral</option>
+              <option>Talleres grupales</option>
+            </select>
+
+            <textarea name="mensaje" placeholder="Cuéntanos brevemente qué necesitas" required></textarea>
+
+            <button class="btn primary" type="submit">
+              Enviar consulta
+            </button>
+
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
-  <footer><div class="wrap foot"><div><strong>OPSIS</strong> · Peritajes psicológicos, sociales y evaluación psicojurídica</div><div>opsisperitajes.cl · Santiago, Chile</div></div></footer><a class="whatsapp" href="https://wa.me/56988288237">WhatsApp</a>
+  <footer>
+    <div class="wrap foot">
+      <div><strong>OPSIS</strong> · Peritajes psicológicos, sociales y evaluación psicojurídica</div>
+      <div>opsisperitajes.cl · Santiago, Chile</div>
+    </div>
+  </footer><a class="whatsapp" href="https://wa.me/56988288237">WhatsApp</a>
 </body>
+
 </html>
